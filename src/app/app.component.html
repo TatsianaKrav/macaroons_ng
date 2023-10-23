@@ -1,0 +1,159 @@
+<header class="header">
+  <div class="container">
+    <a href="#" class="logo">
+      <img src="assets/images/logo.png" alt="logo">
+    </a>
+    <nav class="menu" id="menu" #menu>
+      <div class="close" #close (click)="closeBurgerMen()">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872
+                                    c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872
+                                    c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052
+                                    L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116
+                                    c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952
+                                    c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116
+                                    c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"/>
+                            </g>
+                        </g>
+                </svg>
+      </div>
+      <ul class="menu-list">
+        <li>
+          <a href="javascript:void(0)" (click)="scrollTo(productsElement)">Пироженки</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" (click)="scrollTo(benefitsElement)">О нас</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" (click)="scrollTo(orderElement)">Оформить заказ</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="gap"></div>
+    <div class="phone">{{phoneValue | formatPhone}}</div>
+    <div class="burger" id="burger" (click)="openBurgerMenu()">
+      <svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" preserveAspectRatio="xMidYMid meet"
+           xmlns="http://www.w3.org/2000/svg">
+        <title>bars-line</title>
+        <path class="clr-i-outline clr-i-outline-path-1" d="M32,29H4a1,1,0,0,1,0-2H32a1,1,0,0,1,0,2Z"></path>
+        <path class="clr-i-outline clr-i-outline-path-2" d="M32,19H4a1,1,0,0,1,0-2H32a1,1,0,0,1,0,2Z"></path>
+        <path class="clr-i-outline clr-i-outline-path-3" d="M32,9H4A1,1,0,0,1,4,7H32a1,1,0,0,1,0,2Z"></path>
+        <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+      </svg>
+    </div>
+  </div>
+</header>
+<div class="macaroons" id="macaroons">
+  <div class="container">
+    <h1>Мягкие французские пироженки Macaroons</h1>
+    <div class="macaroons-text">
+      Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
+    </div>
+    <button class="btn" btnEffect (click)="scrollTo(productsElement)"
+            [btnEffectDefaultBgColor]="'#821328'"
+            [btnEffectHoverBgColor]="'#D74F62FF'"
+
+    >Выбрать макарун
+    </button>
+    <div class="macaroons-image">
+      <img src="assets/images/macaroons.png" alt="macaroons">
+      <div class="cle one"></div>
+      <div class="cle two"></div>
+    </div>
+
+  </div>
+
+</div>
+<div class="benefits" id="benefits" #benefitsElement>
+  <div class="container">
+    <div class="benefits-info">
+      <h2>Мы печём для вас вкуснейшие макаруны уже более 10 лет</h2>
+      <div class="benefits-text">
+        Все пироженки мы готовим только из натуральных и качественных продуктов, без консервантов,
+        ароматизаторов,
+        красителей. Используем в приготовлении сливочное масло 82,5%, без дрожжей, маргарина, разрыхлителей и
+        улучшителей муки.
+      </div>
+    </div>
+    <div class="benefits-image">
+      <img src="assets/images/macaroon.png" alt="macaroon">
+    </div>
+    <benefit *ngFor="let benefit of benefits; let i = index;" [benefit]="benefit" [index]="i"
+             [class]="{one: i===0, two: i===1, three: i===2, four: i===3}"></benefit>
+  </div>
+</div>
+<div class="products" id="products" #productsElement>
+  <div class="container">
+    <h2 class="products-title">Выберите свой макарун</h2>
+    <product *ngFor="let product of products, let i = index" [product]="product"  [index]="i"
+             (orderProductEvent)="order($event, orderElement)"></product>
+  </div>
+</div>
+<div class="order" id="order" #orderElement>
+  <div class="container">
+    <div class="order-image">
+      <img src="assets/images/macaroons-order.png" alt="macaroons">
+      <img class="strawberry" src="assets/images/strawberry-left.png" alt="strawberry">
+    </div>
+    <div class="order-form">
+      <h2 class="form-title">Закажите макарун!</h2>
+      <div class="form-info">Выберите понравившийся макарун, заполните форму и ожидайте звонка нашего пекаря!
+      </div>
+      <form class="form">
+        <div class="choice">Ваш выбор</div>
+        <input class="input" name="product" type="text" placeholder="Напишите, что хотите заказать..."
+               [(ngModel)]="formValues.productTitle">
+        <div class="order-data">Заполните данные для заказа</div>
+        <input class="input name" name="name" type="text" placeholder="Ваше имя" [(ngModel)]="formValues.name">
+        <input class="input phone" name="phone" type="text" placeholder="+375 (__) ___ - __ - __"
+               [(ngModel)]="formValues.phone">
+        <button class="btn" btnEffect>Оформить заказ</button>
+      </form>
+    </div>
+    <div class=little-image>
+      <img src="assets/images/strawberry-right.png" alt="strawberry">
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="logo">
+    </div>
+    <div class="rights">Все права защищены, 2020</div>
+    <div class="instagram">
+      <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+             width="512" height="512" x="0" y="0"
+             viewBox="0 0 512.00096 512.00096" style="enable-background:new 0 0 512 512" xml:space="preserve"
+             class=""><g>
+                    <path
+                      d="m373.40625 0h-234.8125c-76.421875 0-138.59375 62.171875-138.59375 138.59375v234.816406c0 76.417969 62.171875 138.589844 138.59375 138.589844h234.816406c76.417969 0 138.589844-62.171875 138.589844-138.589844v-234.816406c0-76.421875-62.171875-138.59375-138.59375-138.59375zm108.578125 373.410156c0 59.867188-48.707031 108.574219-108.578125 108.574219h-234.8125c-59.871094 0-108.578125-48.707031-108.578125-108.574219v-234.816406c0-59.871094 48.707031-108.578125 108.578125-108.578125h234.816406c59.867188 0 108.574219 48.707031 108.574219 108.578125zm0 0"
+                      data-original="#000000" class="">
+                    </path>
+                    <path
+                      d="m256 116.003906c-77.195312 0-139.996094 62.800782-139.996094 139.996094s62.800782 139.996094 139.996094 139.996094 139.996094-62.800782 139.996094-139.996094-62.800782-139.996094-139.996094-139.996094zm0 249.976563c-60.640625 0-109.980469-49.335938-109.980469-109.980469 0-60.640625 49.339844-109.980469 109.980469-109.980469 60.644531 0 109.980469 49.339844 109.980469 109.980469 0 60.644531-49.335938 109.980469-109.980469 109.980469zm0 0"
+                      data-original="#000000" class=""></path><path
+          d="m399.34375 66.285156c-22.8125 0-41.367188 18.558594-41.367188 41.367188 0 22.8125 18.554688 41.371094 41.367188 41.371094s41.371094-18.558594 41.371094-41.371094-18.558594-41.367188-41.371094-41.367188zm0 52.71875c-6.257812 0-11.351562-5.09375-11.351562-11.351562 0-6.261719 5.09375-11.351563 11.351562-11.351563 6.261719 0 11.355469 5.089844 11.355469 11.351563 0 6.257812-5.09375 11.351562-11.355469 11.351562zm0 0"
+          data-original="#000000" class=""></path></g></svg>
+      </a>
+      <div class="instagram-text">{{instagramValue}}</div>
+    </div>
+    <div class="footer-phone">+375 (29) 368-98-68</div>
+  </div>
+</footer>
+<div class="present" *ngIf="showPresent">
+  <a class="present-image" href="#">
+    <img src="assets/images/cart.png" alt="cart">
+    <div class="present-info">
+      {{sum | currency: 'руб.'}}
+      <div class="pointer"></div>
+    </div>
+    <div class="product-counter">{{cartService.count}}</div>
+  </a>
+</div>
+

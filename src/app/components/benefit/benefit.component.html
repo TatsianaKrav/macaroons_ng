@@ -1,0 +1,7 @@
+<div class="benefit">
+  <div class="circle">
+    <div class="number" [class]="{one: index===0, two: index===1}">{{index + 1}}</div>
+  </div>
+  <div class="benefit-title">{{benefit.title}}</div>
+  <div class="benefit-description">{{benefit.description | cutText}}</div>
+</div>

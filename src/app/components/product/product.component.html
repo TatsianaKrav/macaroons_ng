@@ -1,0 +1,17 @@
+<div class="product" >
+  <div class="product-image">
+    <img src="assets/images/{{product.image}}" alt="macaroon">
+  </div>
+  <div class="product-title">{{product.title}}</div>
+  <div class="product-more">
+    <div class="product-info">
+      <div>1 шт.</div>
+      <div class="price">{{product.price}}руб.</div>
+    </div>
+    <button class="btn" btnEffect (click)="orderProduct()"
+            [btnEffectDefaultBgColor]="'#821328'"
+            [btnEffectHoverBgColor]="'#D74F62FF'"
+    >Заказать</button>
+  </div>
+</div>
+
